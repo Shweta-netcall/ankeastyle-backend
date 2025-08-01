@@ -80,13 +80,13 @@ app.post('/api/contact', async (req, res) => {
 });
 
 // Database connection
-// mongoose.connect(process.env.MONGO_URI, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// })
-mongoose.connect(process.env.MONGO_URI)
-.then(() => console.log('MongoDB connected'))
-.catch(err => console.log(err));
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+// mongoose.connect(process.env.MONGO_URI)
+// .then(() => console.log('MongoDB connected'))
+// .catch(err => console.log(err));
 
 // Routes
 app.use('/api/auth', authRoutes);
@@ -107,7 +107,7 @@ mongoose.connect(process.env.MONGO_URI)
 
     await seedAdmin(); // ✅ Automatically runs once at startup
 
-    const PORT = process.env.PORT || 5001;
+    const PORT = process.env.PORT || 5000;
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
     });

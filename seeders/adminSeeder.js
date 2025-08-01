@@ -7,11 +7,11 @@ dotenv.config(); // Load environment variables
 
 const connectDB = async () => {
   try {
-    // await mongoose.connect(process.env.MONGO_URI || "mongodb://localhost:27017/ankea_style", {
-    //   useNewUrlParser: true,
-    //   useUnifiedTopology: true,
-    // });
-    await mongoose.connect(process.env.MONGO_URI);
+    await mongoose.connect(process.env.MONGO_URI || "mongodb://localhost:27017/ankea_style", {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    // await mongoose.connect(process.env.MONGO_URI);
     console.log('MongoDB connected for seeding...');
   } catch (error) {
     console.error(`Error connecting to DB for seeding: ${error.message}`);
