@@ -52,4 +52,5 @@ const seedAdminUser = async () => {
   }
 };
 
-seedAdminUser();
+// seedAdminUser();
+module.exports = seedAdminUser;
