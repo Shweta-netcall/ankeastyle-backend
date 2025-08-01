@@ -7,7 +7,6 @@ const cors = require('cors');
 const nodemailer = require('nodemailer');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/auth');
-const cors = require("cors");
 
 
 const app = express();
