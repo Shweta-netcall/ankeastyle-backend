@@ -98,6 +98,22 @@ const userRoutes = require('./routes/users'); // ✅ correct path
 app.use('/api/users', userRoutes); // ✅ attach it to the app
 
 
+//-------------
+const seedAdmin = require("./seeders/adminSeeder");
+
+mongoose.connect(process.env.MONGO_URI)
+  .then(async () => {
+    console.log("MongoDB connected");
+
+    await seedAdmin(); // ✅ Automatically runs once at startup
+
+    const PORT = process.env.PORT || 5001;
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  })
+
+
 // Start the server
 app.listen(port, () => {
     console.log(`Backend server listening at http://localhost:${port}`);
