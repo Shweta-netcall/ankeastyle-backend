@@ -7,6 +7,7 @@ const cors = require('cors');
 const nodemailer = require('nodemailer');
 const mongoose = require('mongoose');
 const authRoutes = require('./routes/auth');
+const cors = require("cors");
 
 
 const app = express();
@@ -17,6 +18,12 @@ app.use(express.json());
 app.use(cors()); // Enables CORS for all routes
 app.use(bodyParser.json()); // Parses incoming request bodies as JSON
 app.use(bodyParser.urlencoded({ extended: true })); // Parses URL-encoded data
+
+
+app.use(cors({
+  origin: "https://www.ankeastyle.in", // or use "*" for any origin (not recommended in production)
+  credentials: true, // if you're using cookies/auth headers
+}));
 
 // Contact form submission endpoint
 app.post('/api/contact', async (req, res) => {
